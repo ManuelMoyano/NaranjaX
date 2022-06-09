@@ -16,22 +16,31 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List (response.response.results, id: \.id) {item in
-            VStack {
-                HStack{
-                    AsyncImage(url: URL(string: "\(item.fields.thumbnail)")) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Color.gray
+                VStack {
+                    VStack (alignment: .center){
+                        AsyncImage(url: URL(string: "\(item.fields.thumbnail)")) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Color.gray
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .scaledToFill()
+                        VStack {
+                            Text(item.webTitle)
+                                .fontWeight(.bold)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(6)
+                            .font(.title2)
+                            Text (item.webPublicationDate)
+                                    .font(.headline)
+                                    .multilineTextAlignment(.leading)
+                                    .textFieldStyle()
+                            
+                        }
                     }
-                    .frame(width: 150, height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                    .scaledToFill()
-                    Text(item.webTitle)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(6)
-                }
                 }
             }
+
             .task {
                  await loadData()
              }
