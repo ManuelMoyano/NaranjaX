@@ -55,10 +55,18 @@ struct Result: Codable {
     var webTitle: String
     var webUrl: String
     var apiUrl: String
+    var fields = Fields(thumbnail: "Prueba")
     
     
 //    static let example = Result(status: "Status", total: 10, currentPage: "One", id: "id", sectionName: "sectionName", webUrl: "webUrl", apiUrl: "apiUrl")
     
+}
+
+struct Fields: Codable {
+//    var headline: String?
+//    var starRating: String?
+//    var shortUrl: String?
+    var thumbnail: String
 }
 
 //1- Listado de noticias

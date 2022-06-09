@@ -15,9 +15,21 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
+            List (response.response.results, id: \.id) {item in
             VStack {
-                List (response.response.results, id: \.id) {item in
-                        Text(item.webTitle)
+                HStack{
+                    AsyncImage(url: URL(string: "\(item.fields.thumbnail)")) { image in
+                        image.resizable()
+                    } placeholder: {
+                        Color.gray
+                    }
+                    .frame(width: 150, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                    .scaledToFill()
+                    Text(item.webTitle)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(6)
+                }
                 }
             }
             .task {
@@ -59,7 +71,7 @@ struct ContentView: View {
     //    Creating the URL we want to read.
     //    Fetching the data for that URL.
     //    Decoding the result of that data into a struct.
-        guard let url = URL(string: "https://content.guardianapis.com/search?page=\(page)&q=format=json&from-date=2022-01-01&order-by=relevance&api-key=\(keyplataform)") else {
+        guard let url = URL(string: "https://content.guardianapis.com/search?page=\(page)&q=format=json&from-date=2022-01-01&show-fields=starRating,headline,thumbnail,short-url&order-by=relevance&api-key=\(keyplataform)") else {
             print("Invalid URL")
             return
         }
