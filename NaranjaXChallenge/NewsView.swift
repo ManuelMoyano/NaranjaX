@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct NewsView: View {
     @State var result: Result
     
     var body: some View {
         VStack{
             GeometryReader { proxy in
-                VStack {
-                    HStack{
+                ScrollView {
+                    VStack{
                     Text("\(result.webTitle)")
                             .font(.title)
                     Text("\(result.webPublicationDate)")
@@ -26,10 +26,11 @@ struct SwiftUIView: View {
                         } placeholder: {
                             Color.gray
                         }
+                        .scaledToFit()
                         .padding(10)
-                        .frame(width: proxy.size.width, height: proxy.size.height/2)
                         .foregroundColor(.gray)
-//                    Text ("\(result.fields.body)")
+                    Text ("\(result.fields.body)")
+                        .multilineTextAlignment(.leading)
                 }
 
             }
@@ -39,6 +40,6 @@ struct SwiftUIView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView(result: Result.example)
+        NewsView(result: Result.example)
     }
 }

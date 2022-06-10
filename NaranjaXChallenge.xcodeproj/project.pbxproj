@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3C253EEB285258A600E6CB17 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C253EEA285258A600E6CB17 /* NewsView.swift */; };
-		3C253EED285389DE00E6CB17 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C253EEC285389DE00E6CB17 /* WebView.swift */; };
 		3CEBB8B7284E172F00C2BAB1 /* NaranjaXChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEBB8B6284E172F00C2BAB1 /* NaranjaXChallengeApp.swift */; };
 		3CEBB8B9284E172F00C2BAB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEBB8B8284E172F00C2BAB1 /* ContentView.swift */; };
 		3CEBB8BB284E173200C2BAB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CEBB8BA284E173200C2BAB1 /* Assets.xcassets */; };
@@ -18,7 +17,6 @@
 
 /* Begin PBXFileReference section */
 		3C253EEA285258A600E6CB17 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
-		3C253EEC285389DE00E6CB17 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		3CEBB8B3284E172F00C2BAB1 /* NaranjaXChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaranjaXChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEBB8B6284E172F00C2BAB1 /* NaranjaXChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaranjaXChallengeApp.swift; sourceTree = "<group>"; };
 		3CEBB8B8284E172F00C2BAB1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 				3CEBB8B6284E172F00C2BAB1 /* NaranjaXChallengeApp.swift */,
 				3CEBB8B8284E172F00C2BAB1 /* ContentView.swift */,
 				3C253EEA285258A600E6CB17 /* NewsView.swift */,
-				3C253EEC285389DE00E6CB17 /* WebView.swift */,
 				3CEBB8C4284E22C500C2BAB1 /* Response.swift */,
 				3CEBB8BA284E173200C2BAB1 /* Assets.xcassets */,
 				3CEBB8BC284E173200C2BAB1 /* Preview Content */,
@@ -147,7 +144,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CEBB8B9284E172F00C2BAB1 /* ContentView.swift in Sources */,
-				3C253EED285389DE00E6CB17 /* WebView.swift in Sources */,
 				3CEBB8C5284E22C500C2BAB1 /* Response.swift in Sources */,
 				3C253EEB285258A600E6CB17 /* NewsView.swift in Sources */,
 				3CEBB8B7284E172F00C2BAB1 /* NaranjaXChallengeApp.swift in Sources */,

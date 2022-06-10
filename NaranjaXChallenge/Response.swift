@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import WebKit
+import SwiftUI
 
 
 struct EndpointResponse: Codable {
@@ -55,20 +57,35 @@ struct Result: Codable {
     var webTitle: String
     var webUrl: String
     var apiUrl: String
-    var fields = Fields(thumbnail: "Imagen")
+    var fields = Fields(body: "body", thumbnail: "Imagen")
     
     
-    static let example = Result(id: "id",sectionId: "Section",sectionName: "Section Name",webPublicationDate:"Date",webTitle: "Web Title",webUrl: "Web URL",apiUrl: "api Url",fields: Fields(thumbnail: "Imagen"))
+    static let example = Result(id: "id",sectionId: "Section",sectionName: "Section Name",webPublicationDate:"Date",webTitle: "Web Title",webUrl: "Web URL",apiUrl: "api Url",fields: Fields(body: "body", thumbnail: "Imagen"))
     
 }
 
 struct Fields: Codable {
-//    var body: String
+    var body: String
 //    var headLine: String
 //    var starRating: String?
 //    var shortUrl: String?
     var thumbnail: String
 }
+
+struct HTMLView: UIViewRepresentable {
+    let htmlString: String
+    
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.loadHTMLString(htmlString, baseURL: nil)
+    }
+    
+}
+
+
+
 
 //1- Listado de noticias
 //Cada ítem deberá tener:

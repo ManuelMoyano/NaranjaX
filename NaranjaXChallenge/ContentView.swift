@@ -17,26 +17,31 @@ struct ContentView: View {
         NavigationView {
             List (response.response.results, id: \.id) {item in
                 VStack {
-                    VStack (alignment: .center){
-                        AsyncImage(url: URL(string: "\(item.fields.thumbnail)")) { image in
-                            image.resizable()
-                        } placeholder: {
-                            Color.gray
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .scaledToFill()
-                        VStack {
-                            Text(item.webTitle)
-                                .fontWeight(.bold)
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(6)
-                            .font(.title2)
-                            Text (item.webPublicationDate)
-                                    .font(.headline)
-                                    .multilineTextAlignment(.leading)
-                            
+                    NavigationLink {
+                        NewsView(result: item)
+                    } label: {
+                        VStack (alignment: .center){
+                            AsyncImage(url: URL(string: "\(item.fields.thumbnail)")) { image in
+                                image.resizable()
+                            } placeholder: {
+                                Color.gray
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .scaledToFill()
+                            VStack {
+                                Text(item.webTitle)
+                                    .fontWeight(.bold)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(6)
+                                .font(.title2)
+                                Text (item.webPublicationDate)
+                                        .font(.headline)
+                                        .multilineTextAlignment(.leading)
+                                
+                            }
                         }
                     }
+
                 }
             }
 
