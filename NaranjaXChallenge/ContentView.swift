@@ -34,7 +34,6 @@ struct ContentView: View {
                             Text (item.webPublicationDate)
                                     .font(.headline)
                                     .multilineTextAlignment(.leading)
-                                    .textFieldStyle()
                             
                         }
                     }
@@ -80,7 +79,7 @@ struct ContentView: View {
     //    Creating the URL we want to read.
     //    Fetching the data for that URL.
     //    Decoding the result of that data into a struct.
-        guard let url = URL(string: "https://content.guardianapis.com/search?page=\(page)&q=format=json&from-date=2022-01-01&show-fields=starRating,headline,thumbnail,short-url&order-by=relevance&api-key=\(keyplataform)") else {
+        guard let url = URL(string: "https://content.guardianapis.com/search?page=\(page)&q=format=json&from-date=2022-01-01&show-fields=body,headline,thumbnail,short-url&order-by=relevance&api-key=\(keyplataform)") else {
             print("Invalid URL")
             return
         }

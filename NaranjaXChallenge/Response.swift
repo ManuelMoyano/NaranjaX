@@ -55,15 +55,16 @@ struct Result: Codable {
     var webTitle: String
     var webUrl: String
     var apiUrl: String
-    var fields = Fields(thumbnail: "Prueba")
+    var fields = Fields(thumbnail: "Imagen")
     
     
-//    static let example = Result(status: "Status", total: 10, currentPage: "One", id: "id", sectionName: "sectionName", webUrl: "webUrl", apiUrl: "apiUrl")
+    static let example = Result(id: "id",sectionId: "Section",sectionName: "Section Name",webPublicationDate:"Date",webTitle: "Web Title",webUrl: "Web URL",apiUrl: "api Url",fields: Fields(thumbnail: "Imagen"))
     
 }
 
 struct Fields: Codable {
-//    var headline: String?
+//    var body: String
+//    var headLine: String
 //    var starRating: String?
 //    var shortUrl: String?
     var thumbnail: String
