@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import WebKit
 import SwiftUI
 
 
@@ -27,22 +26,9 @@ struct Response: Codable {
     var orderBy:String
     var results = [Result]()
     
-//    init(status:String, userTier: String, total: Int, startIndex: Int, pageSize:Int, currentPage: Int, pages: Int, orderBy: String) {
-//        self.status = status
-//        self.userTier = userTier
-//        self.total = total
-//        self.startIndex = startIndex
-//        self.pageSize = pageSize
-//        self.currentPage = currentPage
-//        self.pages = pages
-//        self.orderBy = orderBy
-//        self.results = [Result]()
-
-//    }
     
     static let example = Response( status:"ok",userTier:"user tier",total:10,startIndex:1,pageSize:10,currentPage:1,pages:29,orderBy:"relevance")
-    
-    
+        
 }
 
 
@@ -57,31 +43,19 @@ struct Result: Codable {
     var webTitle: String
     var webUrl: String
     var apiUrl: String
-    var fields = Fields(body: "body", thumbnail: "Imagen")
+    var fields = Fields(headline: "HeadLine", body: "Body", thumbnail: "Imagen")
     
     
-    static let example = Result(id: "id",sectionId: "Section",sectionName: "Section Name",webPublicationDate:"Date",webTitle: "Web Title",webUrl: "Web URL",apiUrl: "api Url",fields: Fields(body: "body", thumbnail: "Imagen"))
+    static let example = Result(id: "id",sectionId: "Section",sectionName: "Section Name",webPublicationDate:"Date",webTitle: "Web Title",webUrl: "Web URL",apiUrl: "api Url",fields: Fields(headline: "Headline", body: "Body", thumbnail: "Imagen"))
     
 }
 
 struct Fields: Codable {
+    var headline: String
     var body: String
-//    var headLine: String
 //    var starRating: String?
 //    var shortUrl: String?
     var thumbnail: String
-}
-
-struct HTMLView: UIViewRepresentable {
-    let htmlString: String
-    
-    func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
-    }
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.loadHTMLString(htmlString, baseURL: nil)
-    }
-    
 }
 
 

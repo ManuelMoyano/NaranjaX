@@ -12,15 +12,16 @@ struct NewsView: View {
     
     var body: some View {
         VStack{
-            GeometryReader { proxy in
-                ScrollView {
+//                ScrollView {
                     VStack{
-                    Text("\(result.webTitle)")
-                            .font(.title)
                     Text("\(result.webPublicationDate)")
                             .font(.footnote)
+                            .multilineTextAlignment(.leading)
+                    Text("\(result.webTitle)")
+                            .font(.title)
+                    Text ("\(result.fields.headline)")
+                            .font(.headline)
                     }
-//                    Text ("\(result.fields.headLine)")
                     AsyncImage(url: URL(string: "\(result.fields.thumbnail)")) { image in
                             image.resizable()
                         } placeholder: {
@@ -29,11 +30,11 @@ struct NewsView: View {
                         .scaledToFit()
                         .padding(10)
                         .foregroundColor(.gray)
-                    Text ("\(result.fields.body)")
-                        .multilineTextAlignment(.leading)
-                }
-
-            }
+//                    Text ("\(result.fields.body)")
+//                        .multilineTextAlignment(.leading)
+                    HTMLStringView(htmlContent: result.fields.body)
+                        .font(.system(size: 10))
+//                }
         }
     }
 }
