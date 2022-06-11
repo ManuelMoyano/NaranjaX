@@ -2,7 +2,6 @@
 //  Response.swift
 //  NaranjaXChallenge
 //
-//  Created by Manuel Moyano on 06/06/2022.
 //
 
 import Foundation

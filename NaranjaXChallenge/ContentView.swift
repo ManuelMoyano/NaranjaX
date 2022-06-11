@@ -2,20 +2,16 @@
 //  ContentView.swift
 //  NaranjaXChallenge
 //
-//  Created by Manuel Moyano on 06/06/2022.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    let keyplataform = "eb0274aa-bad4-4eeb-b8fe-05ac8f0c0b15"
-    @State private var response = EndpointResponse(response: Response.example)
-    let viewTitle = "Noticias"
-    @State private var page = 1
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
         NavigationView {
-            List (response.response.results, id: \.id) {item in
+            List (viewModel.response.response.results, id: \.id) {item in
                 VStack {
                     NavigationLink {
                         NewsView(result: item)
@@ -46,29 +42,29 @@ struct ContentView: View {
             }
 
             .task {
-                 await loadData()
+                await viewModel.loadData()
              }
-            .navigationTitle(viewTitle)
+            .navigationTitle(viewModel.viewTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
                         Button {
-                            if page > 1 {
-                                page -= 1
+                            if viewModel.page > 1 {
+                                viewModel.page -= 1
                                 Task {
-                                await loadData()
+                                await viewModel.loadData()
                                 }
                             }
                         } label: {
                             Image(systemName: "minus")
                         }
-                        Text ("\(page)")
+                        Text ("\(viewModel.page)")
                         Button {
-                            if page < response.response.pages {
-                                page += 1
+                            if viewModel.page < viewModel.response.response.pages {
+                                viewModel.page += 1
                                 Task {
-                                await loadData()
+                                await viewModel.loadData()
                             }
                             }
                         } label: {
@@ -77,27 +73,6 @@ struct ContentView: View {
                     }
                 }
             }
-        }
-    }
-    
-    func loadData() async {
-    //    Creating the URL we want to read.
-    //    Fetching the data for that URL.
-    //    Decoding the result of that data into a struct.
-        guard let url = URL(string: "https://content.guardianapis.com/search?page=\(page)&q=format=json&from-date=2022-01-01&show-fields=body,headline,thumbnail,short-url&order-by=relevance&api-key=\(keyplataform)") else {
-            print("Invalid URL")
-            return
-        }
-        do {
-    //      El guion bajo en data descarta los metadatos y se queda solo con los datos de la URL
-            let (data, _) = try await URLSession.shared.data(from: url)
-            print("Se ingreso a la funcion")
-            if let decodedResponse = try? JSONDecoder().decode(EndpointResponse.self, from: data) {
-                response = decodedResponse
-            }
-            
-        } catch {
-            print("Invalid data")
         }
     }
 }
