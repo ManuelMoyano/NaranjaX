@@ -31,8 +31,28 @@ extension ContentView {
             }
         }
         
+        func minPage() {
+            if page > 1 {
+                page -= 1
+                Task {
+                    await loadData()
+                }
+            }
+        }
+        
+        func maxPage() {
+            if page < response.response.pages {
+                page += 1
+                Task {
+                await loadData()
+            }
+            }
+        }
+        
         
         
         
     }
 }
+
+

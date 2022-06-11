@@ -11,7 +11,6 @@ struct NewsView: View {
     
     var body: some View {
         VStack{
-                    VStack{
                     Text("\(result.webPublicationDate)")
                             .font(.footnote)
                             .multilineTextAlignment(.leading)
@@ -19,15 +18,7 @@ struct NewsView: View {
                             .font(.title)
                     Text ("\(result.fields.headline)")
                             .font(.headline)
-                    }
-                    AsyncImage(url: URL(string: "\(result.fields.thumbnail)")) { image in
-                            image.resizable()
-                        } placeholder: {
-                            Color.gray
-                        }
-                        .scaledToFit()
-                        .padding(10)
-                        .foregroundColor(.gray)
+                    ImageView(stringURL: result.fields.thumbnail)
                     HTMLStringView(htmlContent: result.fields.body)
         }
     }

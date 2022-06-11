@@ -17,13 +17,7 @@ struct ContentView: View {
                         NewsView(result: item)
                     } label: {
                         VStack (alignment: .center){
-                            AsyncImage(url: URL(string: "\(item.fields.thumbnail)")) { image in
-                                image.resizable()
-                            } placeholder: {
-                                Color.gray
-                            }
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                            .scaledToFill()
+                            ImageView(stringURL: item.fields.thumbnail)
                             VStack {
                                 Text(item.webTitle)
                                     .fontWeight(.bold)
@@ -50,23 +44,15 @@ struct ContentView: View {
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
                         Button {
-                            if viewModel.page > 1 {
-                                viewModel.page -= 1
-                                Task {
-                                await viewModel.loadData()
-                                }
-                            }
+                            viewModel.minPage()
                         } label: {
                             Image(systemName: "minus")
                         }
                         Text ("\(viewModel.page)")
+                        Text ("/")
+                        Text ("\(viewModel.response.response.pages)")
                         Button {
-                            if viewModel.page < viewModel.response.response.pages {
-                                viewModel.page += 1
-                                Task {
-                                await viewModel.loadData()
-                            }
-                            }
+                            viewModel.maxPage()
                         } label: {
                             Image(systemName: "plus")
                         }
