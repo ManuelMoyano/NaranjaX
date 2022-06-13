@@ -21,9 +21,9 @@ struct ContentView: View {
                             VStack {
                                 Text(item.webTitle)
                                     .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .lineLimit(6)
-                                .font(.title2)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(6)
+                                    .font(.title2)
                                 Text (item.webPublicationDate)
                                         .font(.headline)
                                         .multilineTextAlignment(.leading)
